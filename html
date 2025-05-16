@@ -1,6 +1,3 @@
-// SilzeyCom POS System - Firebase Integrated (Detailed with Reporting, Inventory, and Taxes)
-// Main Technologies: React + TailwindCSS + Firebase + React Router
-
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { initializeApp } from "firebase/app";
@@ -10,7 +7,7 @@ import {
   onSnapshot
 } from "firebase/firestore";
 
-const logo = "https://silzey.com/path/logo.png"; // Hosted logo
+const logo = "https://silzey.com/path/logo.png"; // Replace with your hosted logo URL
 
 const Spinner = () => (
   <div className="flex items-center justify-center h-screen">
@@ -18,6 +15,7 @@ const Spinner = () => (
   </div>
 );
 
+// Your real Firebase config here
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
   authDomain: "YOUR_AUTH_DOMAIN",
@@ -31,8 +29,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 async function setupCollections() {
-  // Initialize Firestore collections or seed data if needed
-  // (Optional, you can keep your setup code here)
+  // Optional: any initial setup or seeding data
 }
 
 const Home = () => <div className="text-xl font-bold text-sky-700">Welcome to SilzeyCom POS Home</div>;
@@ -55,7 +52,6 @@ const AdminDashboard = () => {
 
   if (loading) return <Spinner />;
 
-  // Combined admin control cards
   const adminControls = [
     "🛍️ Manage Products",
     "📦 Manage Inventory",
@@ -132,7 +128,8 @@ function App() {
   }, []);
 
   return (
-    <Router>
+    // Note the basename prop here: use your GitHub repo subpath 'mkt'
+    <Router basename="/mkt">
       <div className="min-h-screen bg-sky-50 text-sky-800">
         <nav className="bg-sky-800 p-4 text-white shadow-md">
           <div className="max-w-7xl mx-auto flex justify-between items-center">
